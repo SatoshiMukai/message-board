@@ -17,8 +17,7 @@
     <div class="panel-heading">新規投稿</div>
     
 <div class="panel-body">
-    <div class="form-horizontal">
-<%= form_for(@message) do |f| %>
+<%= form_for(@message) do :class="form-horizontal" |f| %>
    <div class="form-group">名前:
   <%= f.text_field :name %>
   </div>
@@ -32,6 +31,5 @@
   <%= f.submit class: "btn btn-sm btn-primary" %>
   </div>
 <% end %>
-</div>
 </div>
 </div>
