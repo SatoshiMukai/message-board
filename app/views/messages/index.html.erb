@@ -17,19 +17,26 @@
     <div class="panel-heading">新規投稿</div>
     
 <div class="panel-body">
-<%= form_for(@message) do :class="form-horizontal" |f| %>
-   <div class="form-group">名前:
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @message.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
+
+  名前:
   <%= f.text_field :name %>
-  </div>
 
-
-   <div class="form-group">内容:
-  <%= f.text_area :body, class: "form-control", :size => "8x4" %>
-  </div>
-  
-   <div class="form-group">
+  内容:
+  <%= f.text_field :body %>
   <%= f.submit class: "btn btn-sm btn-primary" %>
-  </div>
 <% end %>
 </div>
 </div>
