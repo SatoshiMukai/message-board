@@ -19,6 +19,11 @@ def update
       render 'edit'
     end
 end
+
+  def destroy
+    @message.destroy
+    redirect_to root_path, notice: 'メッセージを削除しました'
+  end
   
 
   private
@@ -28,11 +33,6 @@ end
   
   def set_message
     @message = Message.find(params[:id])
-  end
-
-  def destroy
-    @message.destroy
-    redirect_to root_path, notice: 'メッセージを削除しました'
   end
 
 
